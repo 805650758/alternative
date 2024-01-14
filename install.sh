@@ -441,8 +441,8 @@ domain_check() {
     read -rp "请输入你的域名信息(eg:www.wulabing.com):" domain
     domain_ip=$(http://ip-api.com/line/"${domain}"?fields=query)
     echo -e "${OK} ${GreenBG} 正在获取 公网ip 信息，请耐心等待 ${Font}"
-    wgcfv4_status=$(curl -s4m8 https://ifconfig.co/)
-    wgcfv6_status=$(curl -s6m8 https://ifconfig.co/)
+    wgcfv4_status=$(curl -s4m8 https://www.cloudflare.com/cdn-cgi/trace -k | grep warp | cut -d= -f2)
+    wgcfv6_status=$(curl -s6m8 https://www.cloudflare.com/cdn-cgi/trace -k | grep warp | cut -d= -f2)
     if [[ ${wgcfv4_status} =~ "on"|"plus" ]] || [[ ${wgcfv6_status} =~ "on"|"plus" ]]; then
         # 关闭wgcf-warp，以防误判VPS IP情况
         wg-quick down wgcf >/dev/null 2>&1
