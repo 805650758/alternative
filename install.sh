@@ -439,7 +439,7 @@ ssl_install() {
 
 domain_check() {
     read -rp "请输入你的域名信息(eg:www.wulabing.com):" domain
-    domain_ip=$(curl -sm8 https://ipget.net/?ip="${domain}")
+    domain_ip=$(http://ip-api.com/line/"${domain}"?fields=query)
     echo -e "${OK} ${GreenBG} 正在获取 公网ip 信息，请耐心等待 ${Font}"
     wgcfv4_status=$(curl -s4m8 https://ifconfig.co/)
     wgcfv6_status=$(curl -s6m8 https://ifconfig.co/)
